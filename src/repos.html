@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Github Repositories</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<ul id="repositories"></ul>
+<script>
+    $.get("/repositories/torieee", function (data) {
+        var repositories = data;
+        var listItems = repositories.map(function (repository) {
+            return "<li><a href='" + repository.url + "'>" + repository.name + "</a></li>";
+        });
+        $("#repositories").html(listItems.join(""));
+    });
+</script>
+</body>
+</html>

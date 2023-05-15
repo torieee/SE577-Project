@@ -4,7 +4,7 @@
     
     <div class="column">
       <p>Random information goes here</p>
-      <p>blah blah blah <br>blah blah blah <br>I feel like this page could be merged with the About page maybe</p>
+      <p>I feel like this page could be merged with the About page maybe</p>
       
     </div>
     <div class="column">

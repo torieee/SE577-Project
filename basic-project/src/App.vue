@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 //import RouterLink  from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
 import FirstPage from './pages/AboutMe.vue'
 import SecondPage from './pages/ClassProjects.vue'
 import ThirdPage from './pages/PassionProjects.vue'

@@ -3,7 +3,7 @@
   <h1><span class="header-color">Passion Projects</span></h1>
  <p>This is a list of repositories that showcase projects I created that I'm passionate about. Initially, <br>
 my passion projects centered around my experience in the financial services industry. I believe that <br>
-there is ample opportunity to improve and enhance the technology used in This industry, and I plan <br>to expand
+there is ample opportunity to improve and enhance the technology used in this industry, and I plan <br>to expand
 on these projects in the coming months.
 <br><br><br>
  </p>

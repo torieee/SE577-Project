@@ -3,8 +3,8 @@ import { RouterLink, RouterView } from 'vue-router'
 //import RouterLink  from 'vue-router'
 //import HelloWorld from './components/HelloWorld.vue'
 import FirstPage from './pages/AboutMe.vue'
-import SecondPage from './pages/ClassProjects.vue'
-import ThirdPage from './pages/PassionProjects.vue'
+import SecondPage from './pages/InternalDB.vue'
+import ThirdPage from './pages/GitHubAPI.vue'
 
 </script>
 
@@ -15,8 +15,8 @@ import ThirdPage from './pages/PassionProjects.vue'
       <nav class="navheader">
           <RouterLink to="/">HOME</RouterLink>
           <RouterLink to="/aboutme">ABOUT ME</RouterLink>
-          <RouterLink to="/classprojects">CLASS PROJECTS</RouterLink>
-          <RouterLink to="/passionprojects">PASSION PROJECTS</RouterLink>
+          <RouterLink to="/internal">INTERNAL DATABASE</RouterLink>
+          <RouterLink to="/githubAPI">GITHUB API</RouterLink>
           <hr>
       </nav>
     </div>

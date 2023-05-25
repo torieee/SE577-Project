@@ -9,8 +9,14 @@ export interface GitHubApiInterface {
     name: string,
     id: string,
     owner: {login: string},
-    html_url: String
+    html_url: string
 
+}
+
+export interface GistInterface {
+
+    files: string,
+    url: string
 }
 
 export interface ApiErrorInterface {

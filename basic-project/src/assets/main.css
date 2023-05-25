@@ -51,3 +51,9 @@ p{
   font-size: larger;
 }
 
+h3{
+  color:hsla(175, 45%, 45%, 0.982);
+  font-weight: 500;
+  font-size: 30px;
+}
+

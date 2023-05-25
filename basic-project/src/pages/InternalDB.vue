@@ -1,10 +1,15 @@
 <template>
   <br>
-  <h1><span class="header-color">Class Projects</span></h1>
+  <h1><span class="header-color">Internal GitHub Database</span></h1>
  <p> 
-  This is a list of repositories that showcases projects from my coursework.
-  <br><br><br>
+  This is a list of repositories that is rendered by using an internal JSON database that I have hard coded. <br>
+  The repositories are accessed through the server and formatted based on the API interface for the mock data.
+  <br><br>
  </p>
+
+ <h3>
+  List of repositories from the internal database:
+ </h3>
 
   <div class="repo-list" v-if="repoData.length > 0">
     <table>
@@ -14,9 +19,9 @@
         <th>Last Updated: </th>
       </tr>
       <tr v-for = "(repo, rowNum) in repoData">
-        <td v-if="repo.flag == true">{{ repo.repo }}</td>
-        <td v-if="repo.flag == true">{{ repo.desc }}</td>
-        <td v-if="repo.flag == true">{{ repo.lastUpdated }}</td>
+        <td>{{ repo.repo }} &nbsp&nbsp</td>
+        <td>&nbsp&nbsp&nbsp&nbsp{{ repo.desc }}&nbsp&nbsp</td>
+        <td>&nbsp&nbsp{{ repo.lastUpdated }}</td>
       </tr>
     </table>
   </div>
@@ -25,7 +30,7 @@
 
 <script lang="ts">
     export default {
-      name: 'ClassProjects',
+      name: 'Internal',
     };
     </script>
 

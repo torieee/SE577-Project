@@ -1,35 +1,16 @@
 <template>
   <br>
-  <h1><span class="header-color">Passion Projects</span></h1>
- <p>This is a list of repositories that showcase projects I created that I'm passionate about. Initially, <br>
-my passion projects centered around my experience in the financial services industry. I believe that <br>
-there is ample opportunity to improve and enhance the technology used in this industry, and I plan <br>to expand
-on these projects in the coming months.
-<br><br><br>
+  <h1><span class="header-color">GitHub API</span></h1>
+ <p>This is a list of repositories that is rendered by using the GitHub API. An authorization token was embedded <br>
+  into the server that allows access to these repositories. I chose to show the name of the repository, GitHub's <br>
+  unique ID for the repository, the owner (my username), and the URL. There are other identifying factors that could <br>
+  also be included in this rendering as defined by the GitHub API documentation.
+<br><br>
  </p>
 
-  <!-- Only render this table if there is student data-->
-  <div class="repo-list" v-if="repoData.length > 0">
-    <table>
-      <tr>
-        <th>Repository Name: </th>
-        <th>Description: </th>
-        <th>Last Updated: </th>
-      </tr>
-      <tr v-for = "(repo, rowNum) in repoData">
-        <td v-if="repo.flag == false">{{ repo.repo }}</td>
-        <td v-if="repo.flag == false">{{ repo.desc }}</td>
-        <td v-if="repo.flag == false">{{ repo.lastUpdated }}</td>
-      </tr>
-    </table>
-  </div>
+ <h3>List of repositories from GitHub API:</h3>
 
-
-
-  <div class="GitHub-API-Integration">
-    <br><br>
-    <p>___________________________ <br> <strong> FROM GITHUB API </strong></p>
-
+  <div class="GitHub-API-Integration" v-if="repoData.length > 0">
     <p v-for="repo in apiData">
         Name:  {{ repo.name }}
         <br>
@@ -47,7 +28,7 @@ on these projects in the coming months.
 
 <script lang="ts">
     export default {
-      name: 'PassionProjects',
+      name: 'GitHubAPI',
     };
     </script>
 
@@ -104,9 +85,7 @@ on these projects in the coming months.
         width: 50%;
       }
 
-  h3, h4{
-    color:hsla(175, 45%, 45%, 0.982);
-  }
+  
 
   .repo-list{
     color:hsla(31, 19%, 51%, 0.982);

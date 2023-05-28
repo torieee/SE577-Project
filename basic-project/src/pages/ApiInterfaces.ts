@@ -19,8 +19,3 @@ export interface GistInterface {
     url: string
 }
 
-export interface ApiErrorInterface {
-    isError: boolean,
-    errorCode: number,
-    errorMessage: string
-}

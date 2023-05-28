@@ -11,16 +11,26 @@
  <h3>List of repositories from GitHub API:</h3>
 
   <div class="GitHub-API-Integration" v-if="repoData.length > 0">
-    <p v-for="repo in apiData">
-        Name:  {{ repo.name }}
-        <br>
-        ID:  {{ repo.id }}
-        <br>
-        Owner: {{ repo.owner.login }} 
-        <br>
-        Repo URL: {{ repo.html_url }}
-      
-    </p>
+    <div v-for="repo in apiData" class="repo">
+      <p>
+        <div class="repo-name"> <strong>{{ repo.name }}</strong>
+          <br>
+          {{ repo.description }}
+        </div>
+    
+        <div class="repo-info">
+          ID:  {{ repo.id }}
+          <br>
+          Owner: {{ repo.owner.login }} 
+          <br>
+          Language(s): {{ repo.language }}
+          <br>
+          Repo URL: <a :href="repo.html_url">{{ repo.html_url }}</a>
+          
+          
+        </div>
+      </p> 
+    </div>
 
   </div>
 </template>
@@ -80,15 +90,30 @@
     
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .column {
-        float: right;
-        width: 50%;
-      }
-
-  
-
-  .repo-list{
-    color:hsla(31, 19%, 51%, 0.982);
+  .GitHub-API-Integration{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    position: relative;
   }
+
+  .repo{
+    padding-left: 15%;
+  }
+
+  .repo-name:hover + .repo-info, .repo-info:hover{
+    display: block;
+    border: 1px solid hsla(175, 45%, 45%, 0.982);
+  }
+
+  .repo-info{
+    display: none;
+    position: center;
+    top: 100%;
+    left: 0;
+    padding: 10px;
+  }
+
+
 
 </style>

@@ -9,7 +9,9 @@ export interface GitHubApiInterface {
     name: string,
     id: string,
     owner: {login: string},
-    html_url: string
+    html_url: string,
+    description: string,
+    language: string
 
 }
 

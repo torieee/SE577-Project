@@ -1,3 +1,8 @@
+
+# Project Release 4
+C4 diagrams and a UML sequence diagram can be found under the `diagrams` directory.
+
+
 # Project Release 3
 
 ## Initial Notes

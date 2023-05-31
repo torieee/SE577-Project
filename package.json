@@ -5,6 +5,15 @@
   "dependencies": {
     "@fastify/cors": "^8.2.1",
     "dotenv": "^16.0.3",
-    "fastify": "^4.17.0"
+    "fastify": "^4.17.0",
+    "highlight.js": "^11.8.0",
+    "marked": "^5.0.4",
+    "market": "^1.0.0",
+    "md-block": "^0.0.1",
+    "vue-markdown": "^2.2.4"
+  },
+  "devDependencies": {
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1"
   }
 }

@@ -13,7 +13,6 @@ export interface GitHubApiInterface {
     description: string,
     language: string,
     url: string
-
 }
 
 export interface GistInterface {

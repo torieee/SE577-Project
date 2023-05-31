@@ -27,12 +27,12 @@
           Language(s): {{ repo.language }}
           <br>
           Repo URL: <a :href="repo.html_url">{{ repo.html_url }}</a>
-          <br>
-          ReadMe:
-          
-          {{ }}
-          
-          
+          <br><br>
+          ReadMe: 
+          <br> 
+          {{ readMe(repo.name) }}
+          <br><br> <p id="readme"> </p>
+
         </div>
       </p> 
     </div>
@@ -52,9 +52,10 @@
     import type { GitHubApiInterface, RepoApiInterface } from './ApiInterfaces';
     import axios from 'axios';
 
+
     //Most code goes here
     let repoData = ref<RepoApiInterface[]>([])
-    let mdFiles = ref<Array<any>>([])
+
 
     onMounted(async () => {
       console.log("Page 1 mounted")
@@ -85,30 +86,42 @@
       //async calls easier
       let apiAPI = await axios.get<GitHubApiInterface[]>(apiURI)
 
-      try{
-        const repos = apiAPI.data
-        const map = repos.map(async (repo) => {
-          const resp = await axios.get(repo.url + '/contents');
-          const md = resp.data.filter(
-            (file : File) => file.type === 'file' && file.name.endsWith('.md')
-          );
-        return md;
-        });
-        mdFiles.value = await Promise.all(map); 
-      }
-      catch(error)
-      {
-        console.error("ERROR getting mds")
-      }
-        
-      
-
       //if OK, set the studentData variable, so that we can render in the ui
       //repoData.value = repoAPI.data
       if(apiAPI.status == 200){
         apiData.value = apiAPI.data
       }
     })
+
+    //https://api.github.com/repos/torieee/ChessValidation/contents/README.md
+
+    var text : String
+    function readMe(repoName : String)
+    {
+      const markdownURL = `https://raw.githubusercontent.com/torieee/${repoName}/master/README.md`
+      const target = document.getElementById('readme')
+      
+
+      fetch(markdownURL)
+      .then(response => response.text())
+      .then(markdown => {
+        
+        text = markdown 
+        //console.log(markdown)
+        if(target){
+          target.textContent = markdown;
+        }
+        else{
+          console.log("target is null")
+        }   
+      });
+
+      console.log(text)
+      return text
+    }
+    
+
+
 
 
 </script>

@@ -2,7 +2,7 @@
   <br>
   <h1><span class="header-color">Internal GitHub Database</span></h1>
  <p> 
-  This is a list of repositories that is rendered by using an internal JSON database that I have hard coded. <br>
+  This is a list of repositories that is rendered by using an internal JSON database that contains hard coded data. <br>
   The repositories are accessed through the server and formatted based on the API interface for the mock data.
   <br><br>
  </p>

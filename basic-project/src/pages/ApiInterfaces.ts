@@ -11,7 +11,8 @@ export interface GitHubApiInterface {
     owner: {login: string},
     html_url: string,
     description: string,
-    language: string
+    language: string,
+    url: string
 
 }
 

@@ -1,6 +1,7 @@
 <template>
   <h1><span class="header-color">About Me</span></h1>
   <p class="initial">
+    Click the dropdowns below to learn about me.
     <br><br><br>
   </p>    
         <div class="education">
@@ -52,7 +53,7 @@
             <p v-show="buttonPressToggleInterests">
               One of my favorite hobbies is still life photography. I love capturing the simple pleasures and beauty of everyday life.
               <br>
-              In 2022, I read 76 books! I'm on my 21st book of 2023, and my favorite genres are mystery and thriller. The best book I've ever read 
+              In 2022, I read 76 books! I'm on my 26th book of 2023, and my favorite genres are mystery and thriller. The best book I've ever read 
               <br> was "The Girl with the Dragon Tattoo" by Stieg Larsson. I retired from figure skating after 15 years, and since then I've run two half marathons 
               <br>and participated in a duathalon (a triathalon, minus the swimming). I also enjoy lifting weights, hiking, and DIY projects.
 

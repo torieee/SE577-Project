@@ -4,7 +4,8 @@
  <p>This is a list of repositories that is rendered by using the GitHub API. An authorization token was embedded <br>
   into the server that allows access to these repositories. I chose to show the name of the repository, GitHub's <br>
   unique ID for the repository, the owner (my username), and the URL. There are other identifying factors that could <br>
-  also be included in this rendering as defined by the GitHub API documentation.
+  also be included in this rendering as defined by the GitHub API documentation. Hover over the repos to see additional <br>
+   information.
 <br><br>
  </p>
 
@@ -26,6 +27,10 @@
           Language(s): {{ repo.language }}
           <br>
           Repo URL: <a :href="repo.html_url">{{ repo.html_url }}</a>
+          <br>
+          ReadMe:
+          
+          {{ }}
           
           
         </div>
@@ -49,6 +54,7 @@
 
     //Most code goes here
     let repoData = ref<RepoApiInterface[]>([])
+    let mdFiles = ref<Array<any>>([])
 
     onMounted(async () => {
       console.log("Page 1 mounted")
@@ -72,9 +78,30 @@
 
       let apiURI = 'https://api.github.com/users/torieee/repos'
 
+
+
+
       //Use axios to load the student data - readup on await to make
       //async calls easier
       let apiAPI = await axios.get<GitHubApiInterface[]>(apiURI)
+
+      try{
+        const repos = apiAPI.data
+        const map = repos.map(async (repo) => {
+          const resp = await axios.get(repo.url + '/contents');
+          const md = resp.data.filter(
+            (file : File) => file.type === 'file' && file.name.endsWith('.md')
+          );
+        return md;
+        });
+        mdFiles.value = await Promise.all(map); 
+      }
+      catch(error)
+      {
+        console.error("ERROR getting mds")
+      }
+        
+      
 
       //if OK, set the studentData variable, so that we can render in the ui
       //repoData.value = repoAPI.data
@@ -103,7 +130,9 @@
 
   .repo-name:hover + .repo-info, .repo-info:hover{
     display: block;
-    border: 1px solid hsla(175, 45%, 45%, 0.982);
+    border-style: solid;
+    border-width: 1px;
+    border-color: hsla(175, 45%, 45%, 0.5);
   }
 
   .repo-info{

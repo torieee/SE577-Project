@@ -12,7 +12,8 @@ export interface GitHubApiInterface {
     html_url: string,
     description: string,
     language: string,
-    url: string
+    url: string,
+    readMe: string
 }
 
 export interface GistInterface {

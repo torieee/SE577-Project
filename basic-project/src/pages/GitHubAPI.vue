@@ -28,11 +28,10 @@
           <br>
           Repo URL: <a :href="repo.html_url">{{ repo.html_url }}</a>
           <br><br>
-          ReadMe: 
-          <br> 
-          {{ readMe(repo.name) }}
-          <br><br> <p id="readme"> </p>
-
+          ReadMe: <br>
+          <div v-html="repo.readMe"></div>
+          
+          
         </div>
       </p> 
     </div>
@@ -51,7 +50,7 @@
     import { onMounted, ref } from 'vue';
     import type { GitHubApiInterface, RepoApiInterface } from './ApiInterfaces';
     import axios from 'axios';
-
+    
 
     //Most code goes here
     let repoData = ref<RepoApiInterface[]>([])
@@ -62,12 +61,8 @@
 
       let allRepoURI = 'http://localhost:9500/repos'
 
-      //Use axios to load the student data - readup on await to make
-      //async calls easier
       let repoAPI = await axios.get<RepoApiInterface[]>(allRepoURI)
 
-      //if OK, set the studentData variable, so that we can render in the ui
-      //repoData.value = repoAPI.data
       if(repoAPI.status == 200){
         repoData.value = repoAPI.data
       }
@@ -80,49 +75,24 @@
       let apiURI = 'https://api.github.com/users/torieee/repos'
 
 
-
-
-      //Use axios to load the student data - readup on await to make
-      //async calls easier
       let apiAPI = await axios.get<GitHubApiInterface[]>(apiURI)
 
-      //if OK, set the studentData variable, so that we can render in the ui
-      //repoData.value = repoAPI.data
       if(apiAPI.status == 200){
         apiData.value = apiAPI.data
+        
+        //This gets the read me of each of the repos in the array and adds it to the read me of the api
+        for (const repo of apiData.value) {
+          const readmeURL = `https://raw.githubusercontent.com/torieee/${repo.name}/main/README.md`;
+          try {
+            const response = await axios.get(readmeURL);
+            repo.readMe = response.data;
+          } catch (error) {
+            console.error('Problem with readme', error);
+            repo.readMe = 'Error getting readme for this repo';
+          }
+      }
       }
     })
-
-    //https://api.github.com/repos/torieee/ChessValidation/contents/README.md
-
-    var text : String
-    function readMe(repoName : String)
-    {
-      const markdownURL = `https://raw.githubusercontent.com/torieee/${repoName}/master/README.md`
-      const target = document.getElementById('readme')
-      
-
-      fetch(markdownURL)
-      .then(response => response.text())
-      .then(markdown => {
-        
-        text = markdown 
-        //console.log(markdown)
-        if(target){
-          target.textContent = markdown;
-        }
-        else{
-          console.log("target is null")
-        }   
-      });
-
-      console.log(text)
-      return text
-    }
-    
-
-
-
 
 </script>
 

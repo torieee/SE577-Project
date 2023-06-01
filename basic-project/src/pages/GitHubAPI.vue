@@ -2,10 +2,7 @@
   <br>
   <h1><span class="header-color">GitHub API</span></h1>
  <p>This is a list of repositories that is rendered by using the GitHub API. An authorization token was embedded <br>
-  into the server that allows access to these repositories. I chose to show the name of the repository, GitHub's <br>
-  unique ID for the repository, the owner (my username), and the URL. There are other identifying factors that could <br>
-  also be included in this rendering as defined by the GitHub API documentation. Hover over the repos to see additional <br>
-   information.
+  into the server that allows access to these repositories. Hover over the repos to see additional information.
 <br><br>
  </p>
 
@@ -14,7 +11,7 @@
   <div class="GitHub-API-Integration" v-if="repoData.length > 0">
     <div v-for="repo in apiData" class="repo">
       <p>
-        <div class="repo-name"> <strong>{{ repo.name }}</strong>
+        <div class="repo-name"><strong>{{ repo.name }}</strong>
           <br>
           {{ repo.description }}
         </div>
@@ -28,8 +25,12 @@
           <br>
           Repo URL: <a :href="repo.html_url">{{ repo.html_url }}</a>
           <br><br>
-          ReadMe: <br>
-          <div v-html="repo.readMe"></div>
+          Readme: <br>
+          <span class="read-me-style">
+            <div v-html="repo.readMe"></div>
+          </span>
+          
+          
           
           
         </div>
@@ -81,13 +82,12 @@
         apiData.value = apiAPI.data
         
         //This gets the read me of each of the repos in the array and adds it to the read me of the api
-        for (const repo of apiData.value) {
-          const readmeURL = `https://raw.githubusercontent.com/torieee/${repo.name}/main/README.md`;
+        for (var repo of apiData.value) {
+          let readmeURL = `https://raw.githubusercontent.com/torieee/${repo.name}/main/README.md`;
           try {
-            const response = await axios.get(readmeURL);
+            let response = await axios.get(readmeURL);
             repo.readMe = response.data;
           } catch (error) {
-            console.error('Problem with readme', error);
             repo.readMe = 'Error getting readme for this repo';
           }
       }
@@ -126,6 +126,10 @@
     padding: 10px;
   }
 
-
+  .read-me-style{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+    color: hsla(30, 21%, 37%, 0.982);
+  }
 
 </style>

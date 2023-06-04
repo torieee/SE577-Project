@@ -35,7 +35,7 @@ Please navigate to the `diagrams` directory in the root of the project to view C
 
 ### Architecture Decisions
 
-
+The architecture of this application is modeled after a basic single page application architecture using the Vue.js framework. I chose the Vue framework because I had no experience with a web framework prior to this course, and Vue was taught in class. In SPAs, everything is a web component, so each of the Pages (Home, About Me, Internal Database, and GitHub API) access components within the SPA that assist with data access and rendering. The API Interfaces Vue component is responsible for accessing and filtering data from the GitHub API and internal database. I chose to use a Typescript server after developing and testing a Java server using the Spring framework, because it promoted continuity with the use of Typescript and it was much simpler while accomplishing the same objectives. 
 
 ### Description of Quality Attributes
 
